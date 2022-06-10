@@ -1,9 +1,9 @@
 #ifndef little
 #define little 
-
+#undef  little
 #include<iostream>
 struct LittleBag;
-class little_;
+class little;
 
 // storage globals 
 LittleBag* store = nullptr;
@@ -11,13 +11,13 @@ int store_sz = 0;
 int store_idx = 0;
 int store_max = 5;	// such a tiny strt for demo purposes only
 
-class little_
+class little
 {
 protected:
 	int num;
 public:
-	little_();
-	little_(int innum);
+	little();
+	little(int innum);
 	void setnum(int innum);
 	void prtnum();
 	void* operator new(size_t bytes);
@@ -30,7 +30,7 @@ public:
 // in heap array
 struct LittleBag
 {
-	little_ theobject;
+	little theobject;
 	short free;
 };
 
@@ -38,18 +38,18 @@ void exhausted();
 
 
 // def cons
-little_::little_() { this->num = 0; }
+little::little() { this->num = 0; }
 // Conversion cons
-little_::little_(int innum) { num = innum; }
+little::little(int innum) { num = innum; }
 // setter cons
-void little_::setnum(int innum) { num = innum; }
+void little::setnum(int innum) { num = innum; }
 // void prints int
-void little_::prtnum() { std::cout << num; }
+void little::prtnum() { std::cout << num; }
 
 // void pointer returning function, allocates an array of sizeof(LittleBag) and returns a freed node address 
-void* little_::operator new(size_t bytes)
+void* little::operator new(size_t bytes)
 {
-	little_* lp = 0;
+	little* lp = 0;
 	int i = 0;
 
 	// store_sz is empty allocate array in the heap of size store_max of type littleBag
@@ -102,7 +102,7 @@ void* little_::operator new(size_t bytes)
 }
 
 
-void little_::operator delete(void* type)
+void little::operator delete(void* type)
 {
 	int i = 0;
 	// mark as deleted
