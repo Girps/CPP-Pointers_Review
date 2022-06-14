@@ -1,23 +1,31 @@
+// virtual.cpp 
+#include<iostream>
 
-#include "listbase.h"
+#include "Stack.h"
 
 int main() 
 {
-	
+	Stack mystack; 
+	long age;
 
-	dNode* ip = 0; 
-	DList mylist;
-	
+	double gpa; 
 
-	mylist << new intNode(10) << new intNode(20) << new intNode(30);
+	mystack.push((char*)"Lynne", String); 
+	age = 25;
+	gpa = 3.8; 
+	mystack.push(&age, Long); 
+	mystack.push(&gpa, Double); 
 
-	ip = new intNode(40);
-	mylist << ip; 
-	ip = new intNode(50);
-	mylist << ip;
-	ip = new intNode(60);
-	mylist << ip;
-	
-	std::cout << "mylist: " << std::endl;
-	std::cout << mylist; 
+	std::cout << mystack;
+	std::cout << std::endl; 
+
+	void* val; 
+	short type;
+	val = mystack.pop(&type);
+
+	std::cout << mystack; 
+
+	return 0; 
+
+
 }
